@@ -23,4 +23,4 @@
 ### Testing
 - **Run Test** ```php artisan test```
 
-***Warning : Test contains refresh database show configure phpunit.xml with sqlite and memmory. If you wanna use Mysql please donot use your own db you will lose all the datas rather use testdb***   
+***Warning : Test contains refresh database so, configure phpunit.xml with sqlite and memmory. If you wanna use Mysql please donot use your own db you will lose all the data rather use testdb***   
