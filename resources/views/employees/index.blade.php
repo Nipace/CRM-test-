@@ -3,8 +3,6 @@
 @section('content_header')
     <h1>Employees</h1>
 @stop
-
-
 @section('content')
 @include('layouts.components.alert')
     <div class="card">

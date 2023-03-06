@@ -8,18 +8,13 @@
     <div class="row">
         @include('layouts.components.alert')
         <div class="col-12">
-            <a class="btn btn-success" href="{{ route('companies.create') }}"><i class="fas fa-fw fa-plus"></i> Add New</a>
-            <div class="card mt-4">
+            <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
-
+                    <h3 class="card-title">Companies</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
+                        <a href="{{ route('companies.create') }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-plus"></i> Add Company
+                        </a>
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -57,12 +52,7 @@
                                     <td>
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
-                                                @if($item->logo)
                                                 <img alt="Avatar" class="table-avatar" src="{{ $item->logo }}">
-                                                @else
-                                                -
-                                                @endif
-
                                             </li>
                                         </ul>
                                     </td>
