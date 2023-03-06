@@ -5,17 +5,20 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Company;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
 class CompanyTest extends TestCase
 {
 
     use RefreshDatabase, WithFaker;
 
-    /** @test */
+    /** @test */    
+    /**
+     * Test if user can create a company
+     *
+     * @return void
+     */
     public function a_user_can_create_a_company()
     {
         $data = [
@@ -35,7 +38,12 @@ class CompanyTest extends TestCase
 
     }
 
-    /** @test */
+    /** @test */    
+    /**
+     * Test if user can edit company
+     *
+     * @return void
+     */
     public function a_user_can_update_a_company()
     {
         $company = Company::factory()->create();
@@ -56,7 +64,12 @@ class CompanyTest extends TestCase
 
     }
 
-    /** @test */
+    /** @test */    
+    /**
+     * Test if user can delete company
+     *
+     * @return void
+     */
     public function a_user_can_delete_a_company()
     {
         $company = Company::factory()->create();

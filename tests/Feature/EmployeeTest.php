@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Company;
 use App\Models\Employee;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeeTest extends TestCase
@@ -13,7 +12,7 @@ class EmployeeTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test employee creation.
+     * Test if user can create employee.
      *
      * @return void
      */
@@ -41,7 +40,12 @@ class EmployeeTest extends TestCase
             'phone' => '1234567890',
         ]);
     }
-
+    
+    /**
+     * Test if user can edit employee
+     *
+     * @return void
+     */
     public function test_edit_employee()
     {
         $company = Company::factory()->create();
@@ -67,7 +71,12 @@ class EmployeeTest extends TestCase
         $this->assertEquals($newLastName, $employee->last_name);
         $this->assertEquals($company->id, $employee->company_id);
     }
-
+    
+    /**
+     * Test if user can delete employee
+     *
+     * @return void
+     */
     public function testDeleteEmployee()
 {
     $employee = Employee::factory()->create();
