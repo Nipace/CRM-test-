@@ -315,7 +315,7 @@ return [
         ['header' => 'CRM SETTINGS'],
         [
             'text' => 'Companies',
-            'url'  => 'admin/settings',
+            'url'  => '/companies',
             'icon' => 'fas fa-fw fa-building',
         ],
         [
