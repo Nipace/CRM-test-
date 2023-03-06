@@ -17,5 +17,13 @@ class Company extends Model
         'logo',
         'website'
     ];
+    
+    public $appends = [
+        'storage_path'
+    ];
+    public function getStoragePathAttribute()
+    {
+        return storage_path() . '/app' . $this->logo;
+    }
 
 }

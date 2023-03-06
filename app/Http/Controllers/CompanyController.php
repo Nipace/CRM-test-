@@ -20,7 +20,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of companies
      */
     public function index()
     {
@@ -31,16 +31,15 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a company.
      */
     public function create()
     {
-
-        return view('companies.create');
+        return view('companies.form');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created company
      */
     public function store(CompanyRequest $request)
     {
@@ -52,7 +51,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified company.
      */
     public function show(string $id)
     {
@@ -66,7 +65,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified company.
      */
     public function edit(string $id)
     {
@@ -75,11 +74,11 @@ class CompanyController extends Controller
         {
             abort(404);
         }
-        return view('companies.create',compact('model'));
+        return view('companies.form',compact('model'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified company in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -90,12 +89,12 @@ class CompanyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     * This method also shows example for route model binding
+     * Remove the specified company from storage.
      */
     public function destroy(string $id)
     {
         $model = $this->model->findorFail($id);
+        unlink($model->storage_path);
         $model->delete();
         return redirect()->route('companies.index')->with('message', 'Company deleted successfully.');
     }

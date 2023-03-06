@@ -55,12 +55,10 @@
                                 <img src="{{ asset($model->logo) }}" alt="{{ $model->name }}" class="img-fluid">
                             </div>
                         @endif
+                        <div class="form-group">
+                            {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
-                    </div>
-
                     {{ Form::close() }}
                 </div>
             </div>

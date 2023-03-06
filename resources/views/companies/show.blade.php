@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('title', 'Company')
+@section('content_header')
+    <h1>Company/{{ $model->name }}</h1>
+@stop
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

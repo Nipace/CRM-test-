@@ -1,6 +1,8 @@
 @extends('layouts.app')
-
 @section('title', 'Add Employee')
+@section('content_header')
+    <h1>Employees</h1>
+@stop
 @inject('company_helper', 'App\Helpers\CompanyHelper')
 @section('content')
     <div class="row">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('content_header')
+    <h1>Employee/{{ $employee->first_name }}</h1>
+@stop
 @section('content')
   <div class="row">
     <div class="col-md-12">
