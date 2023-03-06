@@ -320,7 +320,7 @@ return [
         ],
         [
             'text' => 'Employees',
-            'url'  => 'admin/settings',
+            'url'  => '/employees',
             'icon' => 'fas fa-fw fa-lock',
         ],
     ],
