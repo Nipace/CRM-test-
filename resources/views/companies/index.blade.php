@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Companies')
 @section('content_header')
     <h1>Companies</h1>
 @stop
@@ -51,9 +51,13 @@
                                     </td>
                                     <td>
                                         <ul class="list-inline">
+                                            @if($item->logo)
                                             <li class="list-inline-item">
                                                 <img alt="Avatar" class="table-avatar" src="{{ $item->logo }}">
                                             </li>
+                                            @else
+                                            -
+                                            @endif
                                         </ul>
                                     </td>
                                     <td>
@@ -90,6 +94,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="px-3 py-2">
+                        {{ $model->links() }}
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

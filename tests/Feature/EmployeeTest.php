@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Company;
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeTest extends TestCase
 {
@@ -19,7 +21,16 @@ class EmployeeTest extends TestCase
     /** @test */
     public function test_employee_creation()
     {
-        $company = Company::factory()->create();
+        $user = User::create([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => Hash::make('password')
+        ]);
+        $this->actingAs($user)
+            ->get('/home')
+            ->assertStatus(200);
+        
+        $company = Company::factory()->create(['logo' => 'null']);
 
         $response = $this->post('/employees', [
             'first_name' => 'John',
@@ -40,15 +51,24 @@ class EmployeeTest extends TestCase
             'phone' => '1234567890',
         ]);
     }
-    
+
     /**
      * Test if user can edit employee
      *
      * @return void
      */
+     /** @test */  
     public function test_edit_employee()
     {
-        $company = Company::factory()->create();
+        $user = User::create([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => Hash::make('password')
+        ]);
+        $this->actingAs($user)
+            ->get('/home')
+            ->assertStatus(200);
+        $company = Company::factory()->create(['logo' => 'null']);
         $employee = Employee::factory()->create(['company_id' => $company->id]);
 
         $newFirstName = 'New First Name';
@@ -71,20 +91,29 @@ class EmployeeTest extends TestCase
         $this->assertEquals($newLastName, $employee->last_name);
         $this->assertEquals($company->id, $employee->company_id);
     }
-    
+
     /**
      * Test if user can delete employee
      *
      * @return void
      */
+     /** @test */  
     public function testDeleteEmployee()
-{
-    $employee = Employee::factory()->create();
+    {
+        $user = User::create([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => Hash::make('password')
+        ]);
+        $this->actingAs($user)
+            ->get('/home')
+            ->assertStatus(200);
+        $employee = Employee::factory()->create();
 
-    $response = $this->delete(route('employees.destroy', $employee->id));
+        $response = $this->delete(route('employees.destroy', $employee->id));
 
-    $response->assertStatus(302);
-    $response->assertRedirect(route('employees.index'));
-    $this->assertDatabaseMissing('employees', ['id' => $employee->id]); 
-}
+        $response->assertStatus(302);
+        $response->assertRedirect(route('employees.index'));
+        $this->assertDatabaseMissing('employees', ['id' => $employee->id]);
+    }
 }

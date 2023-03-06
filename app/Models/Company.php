@@ -23,7 +23,7 @@ class Company extends Model
     ];
     public function getStoragePathAttribute()
     {
-        return storage_path() . '/app' . $this->logo;
+        return storage_path() . '/app/' . $this->logo;
     }
 
 }
